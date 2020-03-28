@@ -6,8 +6,8 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/api/questions/")
-public class QuestionApi {
+@RequestMapping("/questions/")
+public class QuestionController {
 
     private List<QuizQuestion> quizQuestions;
 
@@ -23,12 +23,12 @@ public class QuestionApi {
         return first.get();
     }
 
-    @PostMapping //wprowadzanie
+    @PostMapping
     public boolean addQuestion(@RequestBody QuizQuestion quizQuestion) {
         return quizQuestions.add(quizQuestion);
     }
 
-    @PutMapping //nadpisywanie
+    @PutMapping
     public boolean updateQuestion(@RequestBody QuizQuestion quizQuestion) {
         return quizQuestions.add(quizQuestion);
     }
