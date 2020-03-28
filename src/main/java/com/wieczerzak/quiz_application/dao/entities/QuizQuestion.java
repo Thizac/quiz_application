@@ -1,4 +1,4 @@
-package com.wieczerzak.quiz_application;
+package com.wieczerzak.quiz_application.dao.entities;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
