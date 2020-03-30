@@ -1,4 +1,4 @@
-package com.wieczerzak.quiz_application.manager;
+package com.wieczerzak.quiz_application.services;
 
 import com.wieczerzak.quiz_application.dao.QuestionRepository;
 import com.wieczerzak.quiz_application.dao.entities.QuizQuestion;
@@ -8,12 +8,12 @@ import org.springframework.stereotype.Service;
 import java.util.Optional;
 
 @Service
-public class QuestionManager {
+public class QuestionService {
 
     public QuestionRepository questionRepository;
 
     @Autowired
-    public QuestionManager(QuestionRepository questionRepository) {
+    public QuestionService(QuestionRepository questionRepository) {
         this.questionRepository = questionRepository;
     }
 

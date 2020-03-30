@@ -1,7 +1,7 @@
 package com.wieczerzak.quiz_application.controllers;
 
 import com.wieczerzak.quiz_application.dao.entities.QuizQuestion;
-import com.wieczerzak.quiz_application.manager.QuestionManager;
+import com.wieczerzak.quiz_application.services.QuestionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -11,10 +11,10 @@ import java.util.Optional;
 @RequestMapping("/questions/")
 public class QuestionController {
 
-    private QuestionManager quizQuestions;
+    private QuestionService quizQuestions;
 
     @Autowired
-    public QuestionController(QuestionManager quizQuestions) {
+    public QuestionController(QuestionService quizQuestions) {
         this.quizQuestions = quizQuestions;
     }
 
