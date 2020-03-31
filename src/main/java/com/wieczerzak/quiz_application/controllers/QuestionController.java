@@ -11,35 +11,35 @@ import java.util.Optional;
 @RequestMapping("/questions/")
 public class QuestionController {
 
-    private QuestionService quizQuestions;
+    private QuestionService questionService;
 
     @Autowired
     public QuestionController(QuestionService quizQuestions) {
-        this.quizQuestions = quizQuestions;
+        this.questionService = quizQuestions;
     }
 
     @GetMapping("/all")
     public Iterable<QuizQuestion> getAll() {
-        return quizQuestions.findAll();
+        return questionService.findAll();
     }
 
     @GetMapping()
     public Optional<QuizQuestion> getById(@RequestParam Long id) {
-        return quizQuestions.findById(id);
+        return questionService.findById(id);
     }
 
     @PostMapping
     public QuizQuestion addQuestion(@RequestBody QuizQuestion quizQuestion) {
-       return quizQuestions.save(quizQuestion);
+       return questionService.save(quizQuestion);
     }
 
     @PutMapping
     public QuizQuestion updateQuestion(@RequestBody QuizQuestion quizQuestion) {
-        return quizQuestions.save(quizQuestion);
+        return questionService.save(quizQuestion);
     }
 
     @DeleteMapping
     public void deleteQuestion(@RequestParam Long id){
-        quizQuestions.deleteById(id);
+        questionService.deleteById(id);
     }
 }
