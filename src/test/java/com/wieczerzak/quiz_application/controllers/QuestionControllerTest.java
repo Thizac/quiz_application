@@ -9,6 +9,7 @@ import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnitRunner;
+import org.springframework.http.HttpStatus;
 
 import java.util.List;
 import java.util.Optional;
@@ -32,33 +33,38 @@ public class QuestionControllerTest {
     public void findAll(){
         List<QuizQuestion> questions = mock(List.class);
         when(questionService.findAll()).thenReturn(questions);
-        Assert.assertEquals(questionController.getAll(),questions);
+        Assert.assertEquals(HttpStatus.OK,
+                questionController.getAll().getStatusCode());
     }
     @Test
     public void getById() {
         Optional<QuizQuestion> question = Optional.of(new QuizQuestion());
         when(questionService.findById(ID)).thenReturn(question);
-        Assert.assertEquals(questionController.getById(ID),question);
+        Assert.assertEquals(HttpStatus.OK,
+                questionController.getById(ID).getStatusCode());
     }
 
     @Test
     public void addQuestion() {
         QuizQuestion quizQuestion = new QuizQuestion();
         when(questionService.save(quizQuestion)).thenReturn(quizQuestion);
-        Assert.assertEquals(questionController.addQuestion(quizQuestion),quizQuestion);
+        Assert.assertEquals(HttpStatus.CREATED,
+                questionController.addQuestion(quizQuestion).getStatusCode());
     }
 
     @Test
     public void updateQuestion() {
         QuizQuestion quizQuestion = new QuizQuestion();
         when(questionService.save(quizQuestion)).thenReturn(quizQuestion);
-        Assert.assertEquals(questionController.updateQuestion(quizQuestion),quizQuestion);
+        Assert.assertEquals(HttpStatus.CREATED,
+                questionController.updateQuestion(quizQuestion).getStatusCode());
     }
 
     @Test
     public void deleteQuestion() {
         questionController.deleteQuestion(ID);
-        verify(questionService).deleteById(ID);
+        Assert.assertEquals(HttpStatus.OK,
+                questionController.deleteQuestion(ID).getStatusCode());
 
     }
 }
