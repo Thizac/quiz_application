@@ -30,14 +30,14 @@ public class QuestionControllerTest {
 
 
     @Test
-    public void findAll(){
+    public void findAll_should_return_OK_HTTP_Status(){
         List<QuizQuestion> questions = mock(List.class);
         when(questionService.findAll()).thenReturn(questions);
         Assert.assertEquals(HttpStatus.OK,
                 questionController.getAll().getStatusCode());
     }
     @Test
-    public void getById() {
+    public void getById_should_return_OK_HTTP_Status() {
         Optional<QuizQuestion> question = Optional.of(new QuizQuestion());
         when(questionService.findById(ID)).thenReturn(question);
         Assert.assertEquals(HttpStatus.OK,
@@ -45,7 +45,7 @@ public class QuestionControllerTest {
     }
 
     @Test
-    public void addQuestion() {
+    public void addQuestion_should_return_CREATED_HTTP_Status() {
         QuizQuestion quizQuestion = new QuizQuestion();
         when(questionService.save(quizQuestion)).thenReturn(quizQuestion);
         Assert.assertEquals(HttpStatus.CREATED,
@@ -53,7 +53,7 @@ public class QuestionControllerTest {
     }
 
     @Test
-    public void updateQuestion() {
+    public void updateQuestion_should_return_CREATED_HTTP_Status() {
         QuizQuestion quizQuestion = new QuizQuestion();
         when(questionService.save(quizQuestion)).thenReturn(quizQuestion);
         Assert.assertEquals(HttpStatus.CREATED,
@@ -61,7 +61,7 @@ public class QuestionControllerTest {
     }
 
     @Test
-    public void deleteQuestion() {
+    public void deleteQuestion_should_return_OK_HTTP_Status() {
         questionController.deleteQuestion(ID);
         Assert.assertEquals(HttpStatus.OK,
                 questionController.deleteQuestion(ID).getStatusCode());
