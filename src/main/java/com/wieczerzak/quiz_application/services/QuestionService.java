@@ -1,6 +1,6 @@
 package com.wieczerzak.quiz_application.services;
 
-import com.wieczerzak.quiz_application.dao.QuestionRepository;
+import com.wieczerzak.quiz_application.dao.repositories.QuestionRepository;
 import com.wieczerzak.quiz_application.dao.entities.QuizQuestion;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

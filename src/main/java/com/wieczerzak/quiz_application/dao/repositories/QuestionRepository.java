@@ -1,4 +1,4 @@
-package com.wieczerzak.quiz_application.dao;
+package com.wieczerzak.quiz_application.dao.repositories;
 
 import com.wieczerzak.quiz_application.dao.entities.QuizQuestion;
 import org.springframework.data.repository.CrudRepository;

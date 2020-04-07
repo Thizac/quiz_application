@@ -1,6 +1,6 @@
 package com.wieczerzak.quiz_application.services;
 
-import com.wieczerzak.quiz_application.dao.QuestionRepository;
+import com.wieczerzak.quiz_application.dao.repositories.QuestionRepository;
 import com.wieczerzak.quiz_application.dao.entities.QuizQuestion;
 import org.junit.Assert;
 import org.junit.Test;

@@ -2,23 +2,25 @@ package com.wieczerzak.quiz_application.dao.entities;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.List;
 
 @AllArgsConstructor
+@NoArgsConstructor
 @Getter
 @Setter
 @Entity
+@Table(name = "Question")
 public class QuizQuestion {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
 
     private String category;
 
@@ -26,17 +28,13 @@ public class QuizQuestion {
 
     private String content;
 
-    private String answerA;
-    private String answerB;
-    private String answerC;
-    private String answerD;
-    private char correctAnswer;
+    @OneToMany(fetch = FetchType.LAZY, targetEntity = Answer.class, cascade = CascadeType.ALL)
+    @JoinColumn(name = "AnswerID", referencedColumnName = "id")
+    private List<Answer> answers;
 
     private LocalDate createdDate;
 
 
-    public QuizQuestion() {
-    }
 
 
 }
