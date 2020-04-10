@@ -29,10 +29,10 @@ public class QuizQuestion {
     private String content;
 
     @OneToMany(fetch = FetchType.LAZY, targetEntity = Answer.class, cascade = CascadeType.ALL)
-    @JoinColumn(name = "AnswerID", referencedColumnName = "id")
+    @JoinColumn(name = "QUESTION_ID", referencedColumnName = "id")
     private List<Answer> answers;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne()
     private Quiz quiz;
 
     private LocalDate createdDate;

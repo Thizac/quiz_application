@@ -19,10 +19,8 @@ public class Quiz {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long Id;
 
-    @OneToMany(
-            mappedBy = "quiz",
-            cascade = CascadeType.ALL
-    )
+    @OneToMany(fetch = FetchType.LAZY, targetEntity = QuizQuestion.class, cascade = CascadeType.ALL)
+    @JoinColumn(name = "QUIZ_ID", referencedColumnName = "id")
     private List<QuizQuestion> questions = new ArrayList<>();
 
 
