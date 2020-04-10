@@ -32,6 +32,9 @@ public class QuizQuestion {
     @JoinColumn(name = "AnswerID", referencedColumnName = "id")
     private List<Answer> answers;
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    private Quiz quiz;
+
     private LocalDate createdDate;
 
 }
