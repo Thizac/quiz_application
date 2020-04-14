@@ -1,11 +1,12 @@
 package com.wieczerzak.quiz_application.dao.entities;
 
-import lombok.*;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 
 @NoArgsConstructor
@@ -17,6 +18,10 @@ public class Quiz {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long Id;
+
+    @OneToMany(fetch = FetchType.LAZY, targetEntity = QuizQuestion.class, cascade = CascadeType.ALL)
+    @JoinColumn(name = "QUIZ_ID", referencedColumnName = "id")
+    private List<QuizQuestion> questions = new ArrayList<>();
 
 
     private String quizName;
