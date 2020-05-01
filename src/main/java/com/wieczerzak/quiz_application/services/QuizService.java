@@ -19,7 +19,10 @@ public class QuizService {
 
 
     public Optional<Quiz> findById(Long id){
-        return quizRepository.findById(id);
+        if(quizRepository.existsById(id)){
+            return quizRepository.findById(id);
+        }
+        return Optional.empty();
     }
 
     public Iterable<Quiz>findAll(){
@@ -31,6 +34,8 @@ public class QuizService {
     }
 
     public void deleteById(Long id){
-        quizRepository.deleteById(id);
+        if (quizRepository.existsById(id)) {
+            quizRepository.deleteById(id);
+        }
     }
 }

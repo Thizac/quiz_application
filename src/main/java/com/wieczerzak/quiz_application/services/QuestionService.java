@@ -1,7 +1,7 @@
 package com.wieczerzak.quiz_application.services;
 
-import com.wieczerzak.quiz_application.dao.repositories.QuestionRepository;
 import com.wieczerzak.quiz_application.dao.entities.QuizQuestion;
+import com.wieczerzak.quiz_application.dao.repositories.QuestionRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -19,7 +19,10 @@ public class QuestionService {
 
 
     public Optional<QuizQuestion> findById(Long id){
-        return questionRepository.findById(id);
+        if(questionRepository.existsById(id)){
+            return questionRepository.findById(id);
+        }
+        return Optional.empty();
     }
 
     public Iterable<QuizQuestion>findAll(){
@@ -31,7 +34,9 @@ public class QuestionService {
     }
 
     public void deleteById(Long id){
-        questionRepository.deleteById(id);
+        if (questionRepository.existsById(id)) {
+            questionRepository.deleteById(id);
+        }
     }
 
 
