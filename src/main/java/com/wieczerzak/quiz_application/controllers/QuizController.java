@@ -3,6 +3,7 @@ package com.wieczerzak.quiz_application.controllers;
 import com.wieczerzak.quiz_application.dao.entities.Quiz;
 import com.wieczerzak.quiz_application.exceptions.NotFoundException;
 import com.wieczerzak.quiz_application.services.QuizService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -16,6 +17,7 @@ import javax.validation.Valid;
 
 @Controller
 @RequestMapping("quizzes")
+@Slf4j(topic = "app.logger")
 public class QuizController {
 
     private QuizService quizService;
@@ -27,6 +29,7 @@ public class QuizController {
 
     @GetMapping("/all")
     public ResponseEntity<Iterable<Quiz>> getAll() {
+        log.debug("QUIZ: GET /all method:");
         return ResponseEntity
                 .status(HttpStatus.OK)
                 .body(quizService.findAll());
@@ -34,6 +37,7 @@ public class QuizController {
 
     @GetMapping({"quizId"})
     public ResponseEntity<Quiz> getById(@RequestParam Long quizId) throws NotFoundException {
+        log.debug("QUIZ: GET /"+quizId+" method");
         if(!((quizService.findById(quizId)).isPresent()))
             throw new NotFoundException();
         return ResponseEntity
@@ -44,7 +48,7 @@ public class QuizController {
     @PostMapping
     public ResponseEntity<Quiz> addQuestion(@Valid @RequestBody Quiz quiz, BindingResult bindingResult)
     throws BindException {
-
+        log.debug("QUIZ: POST method");
         if (bindingResult.hasErrors()) throw new BindException(bindingResult);
 
         return ResponseEntity
@@ -54,6 +58,7 @@ public class QuizController {
 
     @DeleteMapping({"quizId"})
     public ResponseEntity<String> deleteQuestion(@Valid @RequestParam Long quizId) {
+        log.debug("QUIZ: DELETE method");
         quizService.deleteById(quizId);
         return ResponseEntity
                 .status(HttpStatus.OK)

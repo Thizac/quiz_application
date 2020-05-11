@@ -15,5 +15,12 @@ public class ApiError {
         this.error = error;
     }
 
-
+    @Override
+    public String toString() {
+        return "ApiError{" +
+                "status=" + status +
+                ", message='" + message + '\'' +
+                ", error='" + error + '\'' +
+                '}';
+    }
 }

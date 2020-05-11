@@ -1,0 +1,1 @@
+2020-05-10 21:53:58,305 10326 [http-nio-8080-exec-2] ERROR app.logger - Not found exception... ApiError{status=400 BAD_REQUEST, message='NotFoundException', error='Element not found '}
