@@ -5,6 +5,9 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -23,9 +26,10 @@ public class Quiz {
     @JoinColumn(name = "QUIZ_ID", referencedColumnName = "id")
     private List<QuizQuestion> questions = new ArrayList<>();
 
-
+    @NotNull
+    @NotBlank(message = "Name is mandatory")
     private String quizName;
 
-
+    private LocalDate createdDate = java.time.LocalDate.now();
 
 }

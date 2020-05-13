@@ -1,0 +1,3 @@
+2020-05-10 21:52:38,899 13717 [http-nio-8080-exec-2] DEBUG app.logger - GET: /3
+2020-05-10 21:52:39,142 13960 [http-nio-8080-exec-2] DEBUG app.logger - Not found exception... ApiError{status=400 BAD_REQUEST, message='NotFoundException', error='Element not found '}
+2020-05-10 21:53:58,184 10205 [http-nio-8080-exec-2] DEBUG app.logger - GET: /3
